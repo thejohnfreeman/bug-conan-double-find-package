@@ -1,3 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
+cmake_policy(SET CMP0079 NEW)
 project(child LANGUAGES CXX)
 find_package(OpenSSL)
+add_library(example INTERFACE)
+target_link_libraries(example INTERFACE OpenSSL::OpenSSL)
