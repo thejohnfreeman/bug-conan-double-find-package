@@ -5,6 +5,7 @@ jobs:
 
   test:
     strategy:
+      fail-fast: false
       matrix:
         platform:
           - ubuntu
@@ -43,7 +44,6 @@ jobs:
           cd ${build_dir}
           conan install .. --build missing --settings build_type=Release --profile:build default --profile:host default
       - name: configure
-        continue-on-error: ${{ matrix.conan == '1.51.0' }}
         run: |
           cd ${build_dir}
           cmake \
